@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mary Valerie Venancio | Creative Virtual Assistant</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Poppins:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-pink: #ff8fab;
+            --secondary-pink: #fb6f92;
+            --dark-pink: #c9184a;
+            --bg-cream: #fff5f8;
+            --white: #ffffff;
+            --text-dark: #2d3436;
+            --text-light: #636e72;
+            --blob-color: #ffc2d1;
+            --shadow: 0 10px 30px rgba(251, 111, 146, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Fredoka', sans-serif;
+            /* Fun, rounded font */
+            color: var(--text-dark);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- HEADER / NAV --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(255, 143, 171, 0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--secondary-pink);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--text-dark);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-light);
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--secondary-pink);
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary-pink), var(--secondary-pink));
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(251, 111, 146, 0.3);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10%;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        .hero-text {
+            flex: 1;
+            z-index: 2;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: #ffe5ec;
+            color: var(--dark-pink);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            color: var(--secondary-pink);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1 span::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 10px;
+            background: var(--primary-pink);
+            bottom: 5px;
+            left: 0;
+            z-index: -1;
+            opacity: 0.4;
+            border-radius: 10px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: var(--blob-color);
+            border-radius: 44% 56% 43% 57% / 63% 44% 56% 37%;
+            z-index: 1;
+            animation: morph 8s ease-in-out infinite;
+        }
+
+        .photo-frame {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 8px solid var(--white);
+            z-index: 2;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- SKILLS SECTION --- */
+        .skills-section {
+            padding: 5rem 10%;
+            background: var(--white);
+            border-radius: 50px 50px 0 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--bg-cream);
+            padding: 2rem;
+            border-radius: 25px;
+            text-align: center;
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .skill-card:hover {
+            background: var(--white);
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--primary-pink);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-pink);
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- SERVICES / ABOUT STRIP --- */
+        .about-strip {
+            background: linear-gradient(45deg, var(--primary-pink), var(--secondary-pink));
+            padding: 3rem 10%;
+            color: var(--white);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .about-strip h2 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        /* --- CALENDLY CTA --- */
+        .cta-section {
+            padding: 6rem 10%;
+            text-align: center;
+            position: relative;
+        }
+
+        .cta-card {
+            background: var(--white);
+            border-radius: 30px;
+            padding: 4rem;
+            box-shadow: var(--shadow);
+            border: 2px dashed var(--primary-pink);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-card h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .calendly-btn-large {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            transition: 0.3s;
+        }
+
+        .calendly-btn-large:hover {
+            background: var(--secondary-pink);
+            transform: scale(1.05);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--bg-cream);
+            padding: 2rem 10%;
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        .social-links {
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+            color: var(--secondary-pink);
+            margin: 0 10px;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes morph {
+            0% {
+                border-radius: 44% 56% 43% 57% / 63% 44% 56% 37%;
+            }
+
+            50% {
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            }
+
+            100% {
+                border-radius: 44% 56% 43% 57% / 63% 44% 56% 37%;
+            }
+        }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 120px;
+            }
+
+            .hero-text {
+                margin-top: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .blob {
+                width: 300px;
+                height: 300px;
+            }
+
+            .photo-frame {
+                width: 250px;
+                height: 250px;
+            }
+
+            nav {
+                display: none;
+                /* Simplified for mobile */
+            }
+
+            .cta-card {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <div class="logo">Mary Valerie <span>Venancio</span></div>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact" class="btn btn-primary">Hire Me</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-text">
+            <span class="hero-tag">✨ Available for Hire</span>
+            <h1>Your vision, <br><span>brought to life.</span></h1>
+            <p>Hi! I'm Mary, a multi-talented Creative Virtual Assistant. I blend administrative precision with artistic
+                flair—handling your graphics, video editing, and social media so you can shine.</p>
+            <!-- Replace '#' with your Calendly Link -->
+            <a href="https://calendly.com/" target="_blank" class="btn btn-primary">
+                <i class="far fa-calendar-alt"></i> Schedule a Chat
+            </a>
+        </div>
+
+        <div class="hero-image">
+            <div class="blob"></div>
+            <div class="photo-frame">
+                <!-- Placeholder Image: Replace src with your actual photo -->
+                <img src="https://connectweb3.github.io/22/mary.jpeg"
+                    alt="Mary Valerie Venancio - Creative Virtual Assistant">
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <div class="section-title">
+            <h2>My Superpowers 🌸</h2>
+            <p>Here is how I can help your business bloom.</p>
+        </div>
+
+        <div class="skills-grid">
+            <!-- Skill 1 -->
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-palette"></i></div>
+                <h3>Graphic Designer</h3>
+                <p>Creating stunning visuals that capture your brand's essence.</p>
+            </div>
+
+            <!-- Skill 2 -->
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-video"></i></div>
+                <h3>Video Editor</h3>
+                <p>Transforming raw footage into engaging stories for your audience.</p>
+            </div>
+
+            <!-- Skill 3 -->
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-hashtag"></i></div>
+                <h3>Social Media Manager</h3>
+                <p>Curating content and managing communities to grow your presence.</p>
+            </div>
+
+            <!-- Skill 4 -->
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-laptop"></i></div>
+                <h3>Virtual Assistant</h3>
+                <p>Efficiently handling admin tasks to keep your business running smoothly.</p>
+            </div>
+
+            <!-- Skill 5 -->
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-layer-group"></i></div>
+                <h3>Art Director</h3>
+                <p>Guiding the visual style and artistic direction of your projects.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fun Stats / About Strip -->
+    <section id="about" class="about-strip">
+        <h2>Why Work With Me?</h2>
+        <p>I bring energy, precision, and a splash of fun to every task. Let's make work feel less like work!</p>
+    </section>
+
+    <!-- Call to Action / Calendly -->
+    <section id="contact" class="cta-section">
+        <div class="cta-card">
+            <h2>Ready to reclaim your time? ⏳</h2>
+            <p>Let's hop on a quick call to discuss your needs. No strings attached, just a friendly chat!</p>
+
+            <!-- CALENDLY BUTTON -->
+            <!-- IMPORTANT: Replace 'https://calendly.com/' with your specific Calendly URL -->
+            <a href="https://calendly.com/" target="_blank" class="calendly-btn-large">
+                <i class="fas fa-coffee"></i> Book a Discovery Call
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+        <p>&copy; 2023 Mary Valerie Venancio | Made with 💖 & ✨</p>
+    </footer>
+
+</body>
+
+</html>
